@@ -1,5 +1,8 @@
 package cn.itheima.redis;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.junit.Test;
 
 import redis.clients.jedis.Jedis;
@@ -17,6 +20,12 @@ public class JedisTest {
 		//取出
 		System.out.println(jedis.get("key2"));
 		
+		
+		List<String> list= jedis.mget("name","age");
+		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+			String string = (String) iterator.next();
+			System.out.println(string);
+		}
 		jedis.close();
 	}
 }
